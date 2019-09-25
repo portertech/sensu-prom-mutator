@@ -1,0 +1,127 @@
+{
+    "check": {
+        "check_hooks": null,
+        "command": "/opt/sensu-plugins-ruby/embedded/bin/metrics-curl.rb -u \"http://localhost\"",
+        "duration": 0.060790838,
+        "env_vars": null,
+        "executed": 1552506033,
+        "handlers": [],
+        "high_flap_threshold": 0,
+        "history": [
+            {
+                "executed": 1552505833,
+                "status": 0
+            },
+            {
+                "executed": 1552505843,
+                "status": 0
+            }
+        ],
+        "interval": 10,
+        "issued": 1552506033,
+        "last_ok": 1552506033,
+        "low_flap_threshold": 0,
+        "metadata": {
+            "name": "curl_timings",
+            "namespace": "default"
+        },
+        "occurrences": 1,
+        "occurrences_watermark": 1,
+        "output": "sensu-go-sandbox.curl_timings.time_total 0.005 1552506033\nsensu-go-sandbox.curl_timings.time_namelookup 0.004",
+        "output_metric_format": "graphite_plaintext",
+        "output_metric_handlers": [
+            "influx-db"
+        ],
+        "proxy_entity_name": "",
+        "publish": true,
+        "round_robin": false,
+        "runtime_assets": [],
+        "state": "passing",
+        "status": 0,
+        "stdin": false,
+        "subdue": null,
+        "subscriptions": [
+            "entity:sensu-go-sandbox"
+        ],
+        "timeout": 0,
+        "total_state_change": 0,
+        "ttl": 0
+    },
+    "entity": {
+        "deregister": false,
+        "deregistration": {},
+        "entity_class": "agent",
+        "last_seen": 1552495139,
+        "metadata": {
+            "name": "sensu-go-sandbox",
+            "namespace": "default"
+        },
+        "redact": [
+            "password",
+            "passwd",
+            "pass",
+            "api_key",
+            "api_token",
+            "access_key",
+            "secret_key",
+            "private_key",
+            "secret"
+        ],
+        "subscriptions": [
+            "entity:sensu-go-sandbox"
+        ],
+        "system": {
+            "arch": "amd64",
+            "hostname": "sensu-go-sandbox",
+            "network": {
+                "interfaces": [
+                    {
+                        "addresses": [
+                            "127.0.0.1/8",
+                            "::1/128"
+                        ],
+                        "name": "lo"
+                    },
+                    {
+                        "addresses": [
+                            "10.0.2.15/24",
+                            "fe80::5a94:f67a:1bfc:a579/64"
+                        ],
+                        "mac": "08:00:27:8b:c9:3f",
+                        "name": "eth0"
+                    }
+                ]
+            },
+            "os": "linux",
+            "platform": "centos",
+            "platform_family": "rhel",
+            "platform_version": "7.5.1804"
+        },
+        "user": "agent"
+    },
+    "metrics": {
+        "handlers": [
+            "prometheus"
+        ],
+        "points": [
+            {
+                "name": "sensu-go-sandbox.curl_timings.time_total",
+                "tags": [
+                    {
+                        "name": "foo",
+                        "value": "42"
+                    }
+                ],
+                "timestamp": 1552506033,
+                "value": 0.005
+            },
+            {
+                "name": "sensu-go-sandbox.curl_timings.time_namelookup",
+                "tags": [],
+                "timestamp": 1552506033,
+                "value": 0.004
+            }
+        ]
+    },
+    "timestamp": 1552506033
+}
