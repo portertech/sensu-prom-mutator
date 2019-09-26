@@ -118,7 +118,7 @@
             {
                 "name": "sensu-go-sandbox.curl_timings.time_namelookup",
                 "tags": [],
-                "timestamp": 1552506033,
+                "timestamp": 1552506034000,
                 "value": 0.004
             }
         ]

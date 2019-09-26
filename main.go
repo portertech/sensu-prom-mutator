@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"time"
 
 	"github.com/sensu/sensu-go/types"
 )
@@ -31,6 +32,12 @@ func main() {
 			tags = tags + fmt.Sprintf("%s=\"%v\"", tag.Name, tag.Value)
 		}
 
-		fmt.Printf("%s{%s} %v %v\n", point.Name, tags, point.Value, point.Timestamp)
+		timestamp := point.Timestamp
+
+		if timestamp < 1000000000000 {
+			timestamp = time.Unix(timestamp, 0).UnixNano() / int64(time.Millisecond)
+		}
+
+		fmt.Printf("%s{%s} %v %v\n", point.Name, tags, point.Value, timestamp)
 	}
 }
