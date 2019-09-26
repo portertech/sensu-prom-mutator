@@ -1,1 +1,8 @@
 sensu-prom-mutator
+
+# dep
+vendor/
+
+# deploy
+bonsai/
+dist/
