@@ -25,11 +25,31 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Failed to unmarshal STDIN data: %s", err)
 		os.Exit(1)
 	}
+	if event.Metrics == nil {
+		fmt.Fprintf(os.Stderr, "No Metrics in event\n")
+		os.Exit(1)
+	}
 
 	for _, point := range event.Metrics.Points {
-		tags := ""
+		tags := make(map[string]string)
+		if event.Entity != nil {
+			tags["sensu_entity_name"] = event.Entity.Name
+		}
+		if event.Check != nil {
+			tags["sensu_check_name"] = event.Check.Name
+		}
 		for _, tag := range point.Tags {
-			tags = tags + fmt.Sprintf("%s=\"%v\"", tag.Name, tag.Value)
+			tags[tag.Name] = tag.Value
+		}
+		tagString := ""
+		i := 0
+		for key, value := range tags {
+			if i == 0 {
+				tagString = tagString + fmt.Sprintf("%s=\"%v\"", key, value)
+			} else {
+				tagString = tagString + fmt.Sprintf(" , %s=\"%v\"", key, value)
+			}
+			i++
 		}
 
 		timestamp := point.Timestamp
@@ -38,6 +58,6 @@ func main() {
 			timestamp = time.Unix(timestamp, 0).UnixNano() / int64(time.Millisecond)
 		}
 
-		fmt.Printf("%s{%s} %v %v\n", point.Name, tags, point.Value, timestamp)
+		fmt.Printf("%s{%s} %v %v\n", point.Name, tagString, point.Value, timestamp)
 	}
 }
