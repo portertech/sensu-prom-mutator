@@ -38,16 +38,18 @@ func main() {
 		if event.Check != nil {
 			tags["sensu_check_name"] = event.Check.Name
 		}
-		for i, tag := range point.Tags {
+		for _, tag := range point.Tags {
 			tags[tag.Name] = tag.Value
 		}
 		tagString := ""
-		for i, tag := range tags {
+		i := 0
+		for key, value := range tags {
 			if i == 0 {
-				tagString = tagString + fmt.Sprintf("%s=\"%v\"", tag.Name, tag.Value)
+				tagString = tagString + fmt.Sprintf("%s=\"%v\"", key, value)
 			} else {
-				tagString = tagString + fmt.Sprintf(" , %s=\"%v\"", tag.Name, tag.Value)
+				tagString = tagString + fmt.Sprintf(" , %s=\"%v\"", key, value)
 			}
+			i++
 		}
 
 		timestamp := point.Timestamp
