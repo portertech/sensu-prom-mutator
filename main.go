@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -11,6 +12,8 @@ import (
 )
 
 func main() {
+	checkPtr := flag.Bool("check-name", false, "enable check name prefix")
+	entityPtr := flag.Bool("entity-name", false, "enable entity name prefix")
 	eventJSON, err := ioutil.ReadAll(os.Stdin)
 
 	if err != nil {
