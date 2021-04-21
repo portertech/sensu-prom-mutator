@@ -29,10 +29,10 @@ func main() {
 	for _, point := range event.Metrics.Points {
 		tags := ""
 		for i, tag := range point.Tags {
-			if i != len(point.Tags) {
-				tags = tags + fmt.Sprintf("%s=\"%v\",", tag.Name, tag.Value)
-			} else {
+			if (len(point.Tags) -1 == i) {
 				tags = tags + fmt.Sprintf("%s=\"%v\"", tag.Name, tag.Value)
+			} else {
+				tags = tags + fmt.Sprintf("%s=\"%v\", ", tag.Name, tag.Value)
 			}
 		}
 
