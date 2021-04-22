@@ -117,9 +117,24 @@
             },
             {
                 "name": "sensu-go-sandbox.curl_timings.time_namelookup",
-                "tags": [],
+                "tags": [
+                    {
+                        "name": "foo",
+                        "value": "bar"
+                    },
+                    {
+                        "name": "bar",
+                        "value": "baz"
+                    }
+                ],
                 "timestamp": 1552506034000,
                 "value": 0.004
+            },
+            {
+                "name": "sensu-go-sandbox.curl_timings.time_example",
+                "tags": [],
+                "timestamp": 1552506034000,
+                "value": 0.003
             }
         ]
     },
